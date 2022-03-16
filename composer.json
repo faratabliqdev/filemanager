@@ -13,8 +13,11 @@
     {
       "name": "Ali Kazemi",
       "email": "Developer@Azrael.ir"
+
     }
+
   ],
+  "minimum-stability":"dev",
   "require": {
     "php": ">=5.6.0",
     "sensio/framework-extra-bundle": "~2.3|~3.0,>=3.0.2|4.0.x|~5.0",
