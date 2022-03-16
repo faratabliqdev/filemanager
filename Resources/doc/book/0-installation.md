@@ -9,7 +9,7 @@ Installation
 ### Step 1: Download the Bundle
 
 ```bash
-$ composer require Adsign/filemanager-bundle
+$ composer require adsign/filemanager-bundle
 ```
 
 ### Step 2: Enable the Bundle

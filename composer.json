@@ -1,5 +1,5 @@
 {
-  "name": "Adsign/filemanager-bundle",
+  "name": "adsign/filemanager-bundle",
   "type": "symfony-bundle",
   "description": "Adsign FileManager is a simple Multilingual File Manager Bundle for Symfony",
   "keywords": [
