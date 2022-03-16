@@ -1,0 +1,30 @@
+services:
+#    fara_data_file_manager.example:
+#        class: Adsign\FileManagerBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+#    //ToDo check it and enable it
+#	file_type_extension:
+#        class: Adsign\FileManagerBundle\Twig\FileTypeExtension
+#        tags:
+#            - { name: twig.extension }
+#        arguments: ['@file_type_service']
+#        public: true
+    Adsign_media:
+        class: Adsign\FileManagerBundle\Repository\MediaRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AdsignFileManagerBundle:Media
+    Adsign_tag:
+        class: Adsign\FileManagerBundle\Repository\TagRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AdsignFileManagerBundle:Tag
+    Adsign_gallery:
+        class: Adsign\FileManagerBundle\Repository\GalleryRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AdsignFileManagerBundle:Gallery
+    file_type_service:
+        class: Adsign\FileManagerBundle\Service\FileTypeService
+        arguments: ['@router']
+        public: true

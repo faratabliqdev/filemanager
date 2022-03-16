@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'BHoma';
+  src: url('../fonts/BHoma.eot?#') format('eot'),  /* IE6–8 */
+       url('../fonts/BHoma.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+       url('../fonts/BHoma.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+@font-face {
+  font-family: 'BTitrBold';
+  src: url('../fonts/BTitrBold.eot?#') format('eot'),  /* IE6–8 */
+       url('../fonts/BTitrBold.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+       url('../fonts/BTitrBold.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+@font-face {
+  font-family: 'BTraffic';
+  src: url('../fonts/BTraffic.eot?#') format('eot'),  /* IE6–8 */
+       url('../fonts/BTraffic.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+       url('../fonts/BTraffic.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+@font-face {
+  font-family: 'BYekan';
+  src: url('../fonts/BYekan.eot?#') format('eot'),  /* IE6–8 */
+       url('../fonts/BYekan.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+       url('../fonts/BYekan.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+body {
+	font-family: BHoma, Arial, Helvetica, sans-serif !important;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: BTitrBold, Arial, Helvetica, sans-serif !important; 
+}

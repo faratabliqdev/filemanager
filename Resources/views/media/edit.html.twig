@@ -1,0 +1,13 @@
+{% extends '@AdsignFileManager/base.html.twig' %}
+
+{% block title %}{% trans %}Edit Media{% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}Edit Media{% endtrans %}</h1>
+
+    {{ include('@AdsignFileManager/media/_form.html.twig', {'button_label': 'Update' }) }}
+
+    {#<a href="{{ path('file_manager_media_index') }}">back to list</a>#}
+
+    {#{{ include('@AdsignFileManager/media/_delete_form.html.twig') }}#}
+{% endblock %}

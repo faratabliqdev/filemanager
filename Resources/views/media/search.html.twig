@@ -1,0 +1,93 @@
+{% extends '@AdsignFileManager/base.html.twig' %}
+
+{% block title %}{% trans %}Media Search{% endtrans %}{% endblock %}
+
+{% block jstop %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery( document ).ready( function( $ ) {
+            var $list = jQuery( '#list' );
+
+            // Initialize DataTable
+            $list.DataTable( {
+                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                "bStateSave": true,
+                "language": {
+                    "url": "/neon/js/datatables/Persian.json"
+                }
+            });
+
+        } );
+    </script>
+{% endblock %}
+
+{% block body %}
+<section class="search-results-env">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{% trans %}Media Search{% endtrans %}</h1>
+
+            <!-- Search search form -->
+            <form method="get" class="search-bar" action="/news/search" enctype="application/x-www-form-urlencoded">
+
+                <div class="input-group">
+                    <input type="text" class="form-control input-lg" name="search" placeholder="{% trans %}Search for something...{%  endtrans %}">
+
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-lg btn-primary btn-icon">
+                            {% trans %}Search{%  endtrans %}
+                            <i class="entypo-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="search-results-panes">
+
+        </div>
+            <div class="search-results-pane">
+                <table class="table table-bordered table-hover table-striped" id="list">
+                    <thead>
+                    <tr>
+                        <th>{% trans %}id{% endtrans %}</th>
+                        <th>{% trans %}action{% endtrans %}</th>
+                        <th>{% trans %}objectId{% endtrans %}</th>
+                        {#<th>{% trans %}objectClass{% endtrans %}</th>#}
+                        <th>{% trans %}version{% endtrans %}</th>
+                        {#<th>{% trans %}data{% endtrans %}</th>#}
+                        <th>{% trans %}username{% endtrans %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for search in searchs %}
+                        <tr>
+                            <td class="text-center middle-align">{{ search.Id  }}</td>
+                            <td class="middle-align">{{ search.Action  }}</td>
+                            <td class="middle-align">{{ search.ObjectId  }}</td>
+                            {#<td class="middle-align">{{ search.ObjectClass  }}</td>#}
+                            <td class="middle-align">{{ search.Version  }}</td>
+                            {#<td class="middle-align">#}{#{{ search.Data  }}#}
+                                {#{% for data in search.Data %}#}
+                                    {#{{  dump(data) }}#}
+                                {#{% endfor %}</td>#}
+                            <td class="text-center middle-align">{{ search.Username  }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+    {# Imported styles on this page #}
+    <link href="{{ asset('neon/js/datatables/datatables.css') }}" rel="stylesheet" />
+    <link href="{{ asset('neon/js/select2/select2-bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('neon/js/select2/select2.css') }}" rel="stylesheet" />
+
+    <script src="{{ asset('neon/js/datatables/datatables.js') }}"></script>
+
+{% endblock %}

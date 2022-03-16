@@ -1,0 +1,52 @@
+{#{% extends '@AdsignFileManager/base.html.twig' %}#}
+
+{#{% block title %}{% trans %}Media{% endtrans %}{% endblock %}#}
+
+{% block body %}
+    <h4>{% trans %}Media{% endtrans %}</h4>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>{% trans %}Id{% endtrans %}</th>
+                <td>{{ medium.id }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Name{% endtrans %}</th>
+                <td>{{ medium.name }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Extension{% endtrans %}</th>
+                <td>{{ medium.extension }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Type{% endtrans %}</th>
+                <td>{{ medium.type }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Preview{% endtrans %}</th>
+                {% set img_src = [medium.url ~ medium.name ~ '.' ~ medium.extension] %}
+                {% if img_src[0] %}
+                    {%  if medium.extension == 'mp4' %}
+                        <td>
+                            <video width="200" height="200" controls>
+                                <source src="{{  img_src[0] }}" type="video/mp4">
+                                {% trans %}Your browser does not support the video tag.{% endtrans %}
+                            </video>
+                        </td>
+                    {% else %}
+                        <td><img src="{{ img_src[0] }}"  width="200" height="200" alt="{{ medium.name }}" /> </td>
+                    {% endif %}
+                {% endif %}
+            </tr>
+
+
+        </tbody>
+    </table>
+
+    {#<a href="{{ path('file_manager_media_index') }}">back to list</a>#}
+
+    {#<a href="{{ path('file_manager_media_edit', {'id': medium.id}) }}">edit</a>#}
+
+    {#{{ include('@AdsignFileManager/media/_delete_form.html.twig') }}#}
+{% endblock %}

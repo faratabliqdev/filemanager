@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Gallery index{% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}Gallery index{% endtrans %}</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{% trans %}Id{% endtrans %}</th>
+                <th>{% trans %}Name{% endtrans %}</th>
+                {#<th>actions</th>#}
+            </tr>
+        </thead>
+        <tbody>
+        {% for gallery in galleries %}
+            <tr>
+                <td>{{ gallery.id }}</td>
+                <td>{{ gallery.name }}</td>
+                {#<td>#}
+                    {#<a href="{{ path('file_manager_gallery_show', {'id': gallery.id}) }}">show</a>#}
+                    {#<a href="{{ path('file_manager_gallery_edit', {'id': gallery.id}) }}">edit</a>#}
+                {#</td>#}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">{{ 'no records found'|trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {#<a href="{{ path('file_manager_gallery_new') }}">Create new</a>#}
+{% endblock %}

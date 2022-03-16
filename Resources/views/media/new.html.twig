@@ -1,0 +1,11 @@
+{% extends '@AdsignFileManager/base.html.twig' %}
+
+{% block title %}New Media{% endblock %}
+
+{% block body %}
+    <h1>Create new Media</h1>
+
+    {{ include('@AdsignFileManager/media/_form.html.twig') }}
+
+    <a href="{{ path('file_manager_media_index') }}">back to list</a>
+{% endblock %}

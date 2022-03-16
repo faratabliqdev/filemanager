@@ -1,0 +1,13 @@
+{% extends '@AdsignFileManager/base.html.twig' %}
+
+{% block title %}Edit Gallery{% endblock %}
+
+{% block body %}
+    <h1>Edit Gallery</h1>
+
+    {{ include('@AdsignFileManager/gallery/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('file_manager_gallery_index') }}">back to list</a>
+
+    {{ include('@AdsignFileManager/gallery/_delete_form.html.twig') }}
+{% endblock %}

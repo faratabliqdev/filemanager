@@ -1,0 +1,4 @@
+services:
+#    fara_data_file_manager.example:
+#        class: Adsign\FileManagerBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

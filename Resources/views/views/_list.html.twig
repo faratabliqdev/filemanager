@@ -1,0 +1,202 @@
+<div class="table-responsive list-blk">
+    <table class="table">
+        <colgroup>
+            <col>
+            <col>
+            <col class="col-lg-7">
+            <col class="col-lg-1">
+            <col class="col-lg-1">
+            <col class="col-lg-1">
+            <col class="col-lg-2">
+        </colgroup>
+        <thead class="thead-default">
+        <tr>
+            {#<th><input type="checkbox" id="select-all" title="{{ 'select-all'|trans }}"></th>#}
+            <th>{{ 'table.id'|trans }}</th>
+            <th>
+                {{ 'table.name'|trans }}
+                {#{{ order(fileManager, 'name') }}#}
+            </th>
+            <th>{{ 'table.perview'|trans }}</th>
+            {#<th class="hidden-xs">#}
+                {#{{ order(fileManager, 'ext') }}#}
+            {#</th>#}
+            <th class="hidden-xs">
+                {{ 'table.type'|trans }}
+                {#{{ order(fileManager, 'type') }}#}
+            </th>
+            <th class="hidden-xs">
+                {{ 'table.size'|trans }}
+                {#{{ order(fileManager, 'size') }}#}
+            </th>
+            <th class="hidden-xs">
+                {{ 'table.dimension'|trans }}
+                {#{{ order(fileManager, 'dimension') }}#}
+            </th>
+            {#<th class="hidden-xs">#}
+                {#{{ 'table.date'|trans }}#}
+                {#{{ order(fileManager, 'date') }}#}
+            {#</th>#}
+            <th class="text-right">{{ 'table.actions'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {#{% for fileEntity in fileArray %}#}
+        {% for medium in media %}
+            <tr>
+                {#<td><input type="checkbox" class="checkbox" name="delete[]" value="{{ medium.name }}" title="{{ medium.name }}"></td>#}
+                <td>{{ medium.id }}</td>
+                {#<td>{{ asset("{medium.url}thumbnail/{medium.name}.{medium.extension}") }}</td>#}
+                {% set img_src = [medium.url ~ medium.name ~ '.' ~ medium.extension] %}
+                {% set img_name = [medium.name ~ '.' ~ medium.extension] %}
+                {#{{ dump(img_src) }}#}
+                <td data-value="{{ img_name[0] }}" data-path="{{ img_src[0] }}"
+                     {% if medium.dimension is defined and medium.dimension %}
+                        {% set dimension = medium.dimension|split('x') %}
+                            data-width="{{ dimension[0] }}" data-height="{{ dimension[1] }}"
+                    {%  endif %}
+                    class="select">
+                    {{ medium.name }}
+                </td>
+                {#<td>#}
+                    {% if img_src[0] %}
+                        {%  if medium.extension == 'mp4' %}
+                                <td>
+                                    <video width="70" height="70" controls>
+                                        <source src="{{  img_src[0] }}" type="video/mp4">
+                                        {% trans %}Your browser does not support the video tag.{% endtrans %}
+                                    </video>
+                                </td>
+                        {% else %}
+                                <td><img src="{{ img_src[0] }}"  width="75" height="75" alt="{{ medium.name }}" /> </td>
+                        {% endif %}
+                    {% endif %}
+                {#</td>#}
+                {#<td>{{ medium.extension }}</td>#}
+                <td>
+                    {% if medium.type is defined and medium.type %}
+                        {% if medium.type == 'image' %}{{ 'عکس' }}
+                        {% elseif medium.type == 'video' %}{{ 'ویدئو' }}
+                        {% elseif medium.type == 'audio' %}{{ 'صوت' }}
+                        {% else %}{{ 'فایل' }}
+                        {% endif %}
+                    {% endif %}
+                </td>
+                <td>{{ (medium.size/1048576)|round(2, 'floor') }} MB</td>
+                <td>{{ medium.dimension }}</td>
+                {#<td>{{ medium.createdAt | date("Y/m/d") }}</td>#}
+                {#<td>{{ medium.createdAt | persianDateTime }}</td>#}
+                <td>
+                    <a data-toggle="modal" onclick="showMedia({{ medium.id }})" >{{ 'show' | trans }}</a>
+                    {#<a data-toggle="modal" onclick="editMedia({{ medium.id }})">{{ 'edit' | trans }}</a>#}
+                    {#<a href="{{ path('media_edit', {'id': medium.id}) }}">{{ 'edit' | trans }}</a>#}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">{{ 'no records found'|trans }}</td>
+            </tr>
+        {% endfor %}
+            {#{% set file = fileEntity.file %}#}
+            {#<tr class="{{ fileEntity.isImage() ? 'img' : file.type }}">#}
+                {#<td><input type="checkbox" class="checkbox" name="delete[]" value="{{ file.fileName }}" title="{{ file.fileName }}"></td>#}
+                {#<td>{{ fileEntity.preview ? fileEntity.preview.html|raw }}</td>#}
+                {#<td data-value="{{ file.fileName }}" {{ fileEntity.attribut|raw }}>#}
+                    {#{{ (fileEntity.preview.folder is defined ? fileEntity.preview.folder : file.fileName)|raw }}#}
+                {#</td>#}
+                {#<td class="hidden-xs">#}
+                    {#<small>{{ file.mTime|date('d/m/Y') }}</small>#}
+                {#</td>#}
+                {#<td class="hidden-xs">#}
+                    {#<small>{{ fileEntity.HTMLSize|trans|raw }}</small>#}
+                {#</td>#}
+                {#<td class="hidden-xs">#}
+                    {#<small>{{ fileEntity.HTMLDimension }}</small>#}
+                {#</td>#}
+                {#<td class="text-right">#}
+                    {#<span data-toggle="tooltip" title="{{ 'title.delete'|trans }}">#}
+                        {#<button type="button"#}
+                                {#class="btn btn-xs btn-danger js-delete-modal"#}
+                                {#data-trigger="click"#}
+                                {#data-container="body"#}
+                                {#data-toggle="modal"#}
+                                {#data-target="#js-confirm-delete"#}
+                                {#data-placement="left"#}
+                                {#data-html="true"#}
+                                {#data-href='{{ path('file_manager_delete', fileManager.queryParameters|merge({'delete[]':file.fileName})) }}'>#}
+                        {#<span class="far fa-trash-alt"></span>#}
+                        {#</button>#}
+                    {#</span>#}
+                    {#<span data-toggle="tooltip" title="{{ 'title.rename.file'|trans }}">#}
+                        {#<button type="button"#}
+                                {#class="btn btn-xs btn-default js-rename-modal"#}
+                                {#data-trigger="click"#}
+                                {#data-container="body"#}
+                                {#data-toggle="modal"#}
+                                {#data-target="#js-confirm-rename"#}
+                                {#data-placement="left"#}
+                                {#data-html="true"#}
+                                {#data-name='{{ file.basename('.'~file.extension) }}'#}
+                                {#data-extension='{{ file.extension }}'#}
+                                {#data-href='{{ path('file_manager_rename', fileManager.queryParameters|merge({'fileName':file.fileName})) }}'>#}
+                        {#<span class="far fa-edit"></span>#}
+                        {#</button>#}
+                    {#</span>#}
+                    {#{% if file.type == "file" %}#}
+                        {#<a data-placement="left" title="{{ 'title.download'|trans }}" class="btn btn-xs btn-default js-download"#}
+                           {#href="{{ path('file_manager_file', fileManager.queryParameters|merge({'fileName':file.fileName})) }}" download>#}
+                            {#<span class="fas fa-download"></span>#}
+                        {#</a>#}
+                        {#{% if fileEntity.isImage() %}#}
+                            {#<span data-toggle="tooltip" title="{{ 'title.preview.file'|trans }}">#}
+                                {#<button type="button"#}
+                                        {#class="btn btn-xs btn-default js-open-modal"#}
+                                        {#data-trigger="click"#}
+                                        {#data-container="body"#}
+                                        {#data-toggle="modal"#}
+                                        {#data-target="#js-display-image"#}
+                                        {#data-placement="left"#}
+                                        {#data-href='{{ fileEntity.preview.path }}'>#}
+                                {#<span class="fas fa-eye"></span>#}
+                                {#</button>#}
+                            {#</span>#}
+                        {#{% endif %}#}
+                    {#{% endif %}#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        </tbody>
+    </table>
+    <script>
+        function showMedia(mediaId) {
+            $("#js-confirm-rename").modal("show");
+            $('#responceAjax').addClass('alert alert-warning');
+            $('#responceAjax').html('در حال بارگذاری فرم');
+            $.ajax({
+                url: showMediaUrl,
+                data:  {id:mediaId},
+                success:function(response) {
+                    $('#responceAjax').removeClass('alert alert-warning');
+                    $("#responceAjax").html('');
+                    $("#responceAjax").append(response);
+                }
+            });
+        };
+
+        function editMedia(mediaId) {
+            $("#js-confirm-rename").modal("show");
+            $('#responceAjax').addClass('alert alert-warning');
+            $('#responceAjax').html('در حال بارگذاری فرم');
+            $.ajax({
+                url: editMediaUrl,
+                data:  {id:mediaId},
+                success:function(response) {
+                    $('#responceAjax').removeClass('alert alert-warning');
+                    $("#responceAjax").html('');
+                    $("#responceAjax").append(response);
+                }
+            });
+        };
+
+    </script>
+</div>

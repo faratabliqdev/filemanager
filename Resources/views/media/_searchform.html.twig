@@ -1,0 +1,4 @@
+{{ form_start(mediasearchform, { 'attr' : { 'class': 'form-search' } })  }}
+    {{ form_widget(mediasearchform) }}
+    <button class="btn btn-danger col-sm-3"><i class="entypo-plus"></i>{{ button_label|default('Search') |trans }}</button>
+{{ form_end(mediasearchform) }}

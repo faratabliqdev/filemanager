@@ -1,0 +1,3 @@
+interactive:
+    resource: "@AdsignFileManagerBundle/Controller"
+    type:     annotation

@@ -1,0 +1,10 @@
+{% extends '@AdsignFileManager/base.html.twig' %}
+
+{% block title %}{% trans %}Gallery index{% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}Gallery index{% endtrans %}</h1>
+
+    {{ sg_datatables_render(datatable) }}
+    {#<a href="{{ path('file_manager_gallery_new') }}">Create new</a>#}
+{% endblock %}

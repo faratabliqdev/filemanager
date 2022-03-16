@@ -1,0 +1,86 @@
+file:
+  add:
+    success: با موفقیت آپلود شد
+  renamed:
+    success: فایل با موفقیت تغییر نام پیدا کرد
+    danger: فایل قبلا وجود دارد یا شما اجازه تغییر نام ندارید
+    unauthorized: این فایل وجود ندارد یا شما اجازه دسترسی به این فایل را ندارید
+    nochanged: تغییر یافت نشد
+  deleted:
+    success: فایل با موفقیت حذف شد
+    danger: فایل وجود ندارد یا شما اجازه دسترسی به این فایل را ندارید
+    unauthorized: این فایل وجود ندارد یا شما اجازه دسترسی را ندارید
+folder:
+  add:
+    danger: "خطایی در موقع ایجاد پوشه رخ داد: %message%"
+    success: پوشه با موفقیت ساخته شد
+  deleted:
+    success: پوشه با موفقیت حذف شد
+    unauthorized: این پوشه وجود ندارد یا شما اجازه دسترسی به آن را ندارید
+button:
+  cancel: لغو
+  refresh: بروزرسانی
+  parent: مادر
+  save: ذخیره
+  add:
+    remote:
+      files: اضافه کردن فایلهای با url
+    files: اضافه کردن فایل
+    folder: اضافه کردن پوشه
+  delete:
+    current: حذف پوشه جاری
+    selected: حذف فایلهای انتخابی
+    action: حذف
+  rename:
+    action: تغییر نام
+  tree: درخت
+title:
+  add:
+    folder: پوشه جدید
+  rename:
+    file: تغییر نام
+  delete: حذف
+  download: دانلود
+  preview:
+    file: بازکردن
+input:
+    default: پوشه بی نام
+table:
+  name: نام
+  date: تاریخ
+  size: اندازه
+  type: نوع
+  id: ردیف
+  perview: پیش نمایش
+  dimension: ابعاد
+  actions: اقدامات
+confirm:
+  delete:  آیا مطمئنید که میخواهید حذف کنید
+size:
+  mb: MB
+  kb: kB
+select-all: انتخاب همه
+upload:
+  exception_move_uploaded_file: عدم اجازه
+Search: جستجو
+' (NEW)': ' (جدید)'
+'Select a TAG or create NEW one': 'برچسب انتخاب کنید یا بسازید'
+'Search a TAG': 'جستجوی برچسب'
+'Please enter 2 or more characters': '2 کاراکتر یا بیشتر وارد کنید'
+Url: آدرس اینترنتی
+Name: نام
+Tag: برچسب
+show: نمایش
+edit: ویرایش
+'no records found': موردی یافت نشد
+'url could not be empty!': آدرس نمیتواند خالی باشد
+'name could not be empty!': نام نمیتواند خالی باشد
+'file Uploaded!': فایل آپلود شد
+Media: رسانه
+Id: ردیف
+Extension: پسوند
+Type: نوع
+Delete: حذف
+Edit Media: ویرایش رسانه
+Update:  بروزرسانی
+Preview: پیش نمایش
